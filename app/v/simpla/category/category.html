@@ -1,0 +1,47 @@
+{/include file="simpla/common/header.html"/}
+{/include file="simpla/common/left.html"/}
+<div id="main-content">
+    <h2>欢迎您 {/$_adminname/}</h2>
+    <p id="page-intro">查看和管理所有分类。</p>
+    <div class="clear"></div>
+    <div class="content-box">
+      <div class="content-box-header">
+        <h3>添加管理</h3>
+        <ul class="content-box-tabs">
+            <li><a href="{/get_url rule="/category/index"/}">分类管理</a></li>
+            <li><a href="#tab1" class="default-tab">添加分类</a></li>
+        </ul>
+        <div class="clear"></div>
+      </div>
+      <div class="content-box-content">
+        <div class="tab-content default-tab" id="tab1">
+        	<div class="form">
+              <form action="{/get_url rule='/category/category'/}" method="post" id="js-form">
+                <fieldset class="clearfix">
+                <input type="hidden" value="{/$category.cat_id/}" name="cat_id" />
+                      <p><label>所属分类：</label>
+                        <span><select id="one" name="pid">
+                        <option value="0">-----顶级分类-----</option>
+                        {/section name=i loop=$categorylist/}
+                        <option value="{/$categorylist[i].cat_id/}" {/if $categorylist[i].cat_id eq $category.pid/}selected="selected"{//if/} {/if $categorylist[i].cat_id eq $category.cat_id/}disabled="disabled"{//if/}>{/$categorylist[i].pre/}{/$categorylist[i].cat_name/}</option>
+                        {//section/}
+                        </select></span>
+                        </p>
+                        <p><label><font class="red"> * </font>分类名称：</label>
+                        <span><input type="text" value="{/$category.cat_name/}" class="text-input small-input" name="cat_name" id="cat_name" /></span>
+                        </p>
+                      <p><label>状态：</label>
+                        <span><input name="is_show" type="radio" value="1" {/if $category.is_show eq 1/}checked="checked"{//if/}/>启用<input name="is_show" type="radio" value="0" {/if $category.is_show eq 0/}checked="checked"{//if/}/>禁用</span>
+                        </p>
+                    </ul>
+                  <dt>
+                    <input type="submit" name="" id="button" class="button" value="{/if $category.cat_id/}编辑{/else/}添加{//if/}" />
+                  </dt>
+                </fieldset>
+              </form>
+            </div>
+        </div>
+      </div>
+  </div>
+{/include file="simpla/common/copy.html"/} </div>
+{/include file="simpla/common/footer.html"/}

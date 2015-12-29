@@ -1,0 +1,6 @@
+<div class="pagination"><a href="{/$first/}">首页</a>{/if $prepg eq null/}<a href="#">上一页</a>{/else/}<a href="{/$prepg/}">上一页</a>{//if/}
+{/section name=sec loop=$pages start=$start max=$max/}
+<a href="{/$pages[sec].url/}" class="number {/if $currpage eq $pages[sec].page/}current{//if/}">{/$pages[sec].page/}</a>
+{//section/}
+{/ if $nextpg eq null/}<a href="#">下一页</a>{/else/}<a href="{/$nextpg/}">下一页</a>{//if/}<a href="{/$last/}">尾页</a></div>
+<div class="clear"></div>

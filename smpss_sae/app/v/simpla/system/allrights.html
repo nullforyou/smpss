@@ -1,0 +1,106 @@
+<div class="rights">
+<p><a href="javascript:void(0)">系统权限</a></p>
+<ul>
+  <li>
+    <input type="checkbox" name="system[]" value="系统信息:index" checked="checked" />
+    系统信息</li>
+  <li>
+    <input type="checkbox" name="system[]" value="系统配置:setting" {/if $action.menu.system.setting/}checked="checked"{//if/} />
+    系统配置</li>
+  <li>
+    <input type="checkbox" name="system[]" value="权限管理:rights" {/if $action.menu.system.rights/}checked="checked"{//if/} />
+    权限管理</li>
+  <li>
+    <input type="checkbox" name="system[]" value="添加管理组:addrights" {/if $action.menu.system.addrights/}checked="checked"{//if/} />
+    添加管理组</li>
+  <li>
+    <input type="checkbox" name="system[]" value="系统日志:log" {/if $action.menu.system.log/}checked="checked"{//if/} />
+    日志管理</li>
+</ul>
+</div>
+<div class="rights">
+<p><a href="javascript:void(0)">帐号权限</a></p>
+<ul>
+  <li>
+    <input type="checkbox" name="account[]" value="帐号管理:index" {/if $action.menu.account.index/}checked="checked"{//if/} />
+    帐号管理</li>
+  <li>
+    <input type="checkbox" name="account[]" value="添加帐号:addaccount" {/if $action.menu.account.addaccount/}checked="checked"{//if/} />
+    添加帐号</li>
+  <li>
+    <input type="checkbox" name="account[]" value="密码修改:modifypwd" {/if $action.menu.account.modifypwd/}checked="checked"{//if/} />
+    密码修改</li>
+</ul>
+</div>
+<div class="rights">
+<p><a href="javascript:void(0)">会员管理权限</a></p>
+<ul>
+  <li>
+    <input type="checkbox" name="member[]" value="帐号管理:index" {/if $action.menu.member.index/}checked="checked"{//if/} />
+    帐号管理</li>
+  <li>
+    <input type="checkbox" name="member[]" value="添加帐号:addmember" {/if $action.menu.member.addmember/}checked="checked"{//if/} />
+    密码修改</li>
+  <li>
+    <input type="checkbox" name="member[]" value="添加用户组:group" {/if $action.menu.member.group/}checked="checked"{//if/} />
+    添加用户组</li>
+</ul>
+</div>
+<div class="rights">
+<p><a href="javascript:void(0)">分类管理权限</a></p>
+<ul>
+  <li>
+    <input type="checkbox" name="category[]" value="分类管理:index" {/if $action.menu.category.index/}checked="checked"{//if/} />
+    分类管理</li>
+  <li>
+    <input type="checkbox" name="category[]" value="添加分类:category" {/if $action.menu.category.category/}checked="checked"{//if/} />
+    添加分类</li>
+</ul>
+</div>
+<div class="rights">
+<p><a href="javascript:void(0)">商品管理权限</a></p>
+<ul>
+  <li>
+    <input type="checkbox" name="goods[]" value="商品管理:index" {/if $action.menu.goods.index/}checked="checked"{//if/} />
+    商品管理</li>
+  <li>
+    <input type="checkbox" name="goods[]" value="添加商品:addgoods" {/if $action.menu.goods.addgoods/}checked="checked"{//if/} />
+    添加商品</li>
+</ul>
+</div>
+<div class="rights">
+<p><a href="javascript:void(0)">库存管理权限</a></p>
+<ul>
+  <li>
+    <input type="checkbox" name="purchase[]" value="库存管理:index" {/if $action.menu.purchase.index/}checked="checked"{//if/} />
+    库存管理</li>
+  <li>
+    <input type="checkbox" name="purchase[]" value="添加库存:purchase" {/if $action.menu.purchase.purchase/}checked="checked"{//if/} />
+    添加库存</li>
+</ul>
+</div>
+<div class="rights">
+<p><a href="javascript:void(0)">销售管理权限</a></p>
+<ul>
+  <li>
+    <input type="checkbox" name="sales[]" value="销售列表:index" {/if $action.menu.sales.index/}checked="checked"{//if/} />
+    销售列表</li>
+  <li>
+    <input type="checkbox" name="sales[]" value="商品出库:sales" {/if $action.menu.sales.sales/}checked="checked"{//if/} />
+    商品出库</li>
+  <li>
+    <input type="checkbox" name="sales[]" value="商品退货:return" {/if $action.menu.sales.return/}checked="checked"{//if/} />
+    商品退货</li>
+</ul>
+</div>
+<div class="rights">
+<p><a href="javascript:void(0)">统计管理</a></p>
+<ul>
+  <li>
+    <input type="checkbox" name="statistics[]" value="销售统计:index" {/if $action.menu.statistics.index/}checked="checked"{//if/} />
+    销售统计</li>
+  <li>
+    <input type="checkbox" name="statistics[]" value="进货统计:sales" {/if $action.menu.statistics.sales/}checked="checked"{//if/} />
+    进货统计</li>
+</ul>
+</div>

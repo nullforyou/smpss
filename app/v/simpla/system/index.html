@@ -1,0 +1,81 @@
+{/include file="simpla/common/header.html"/}
+{/include file="simpla/common/left.html"/}
+<div id="main-content">
+  <h2>欢迎您 {/$_adminname/}</h2>
+  <p id="page-intro">系统信息。</p>
+  <div class="clear"></div>
+  <div class="content-box">
+    <div class="content-box-header">
+      <h3>系统信息</h3>
+      <div class="clear"></div>
+    </div>
+    <div class="content-box-content">
+      <div class="tab-content default-tab" id="tab1">
+        <div class="notification information png_bg"> <a href="#" class="close"><img src="{/$root_dir/}/assets/simpla/images/icons/cross_grey_small.png" title="关闭" alt="close" /></a>
+          <div> 商品总数：{/$system.goodscount/} 。已经销售的总金额：{/$system.salesall.sm/}。库存商品总价：{/$system.salesall.cm/}</div>
+        </div>
+        <div class="notification information png_bg">
+          <div><a href="{/get_url rule="/plugins/index"/}" target="_blank">导入数据</a></div>
+        </div>
+        <div class="content-box column-left">
+          <div class="content-box-header">
+            <h3 style="cursor: s-resize;">销售排行</h3>
+          </div>
+          <div class="content-box-content" style="display: block;">
+            <div class="tab-content default-tab" style="display: block;">
+              <table>
+                <thead>
+                  <tr>
+                    <th>商品名称</th>
+                    <th>销量</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {/section loop=$system.salestop name=i/}
+                <tr>
+                  <td>{/$system.salestop[i].goods_name/}</td>
+                  <td>{/$system.salestop[i].a/}</td>
+                </tr>
+                {//section/}
+                  </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="content-box column-right">
+          <div class="content-box-header">
+            <h3 style="cursor: s-resize;">缺货的商品</h3>
+          </div>
+          <div class="content-box-content" style="display: block;">
+            <div class="tab-content default-tab" style="display: block;">
+              <table>
+                <thead>
+                  <tr>
+                    <th>商品名称</th>
+                    <th>库存</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {/section loop=$system.goodsstock name=i/}
+                <tr>
+                  <td>{/$system.goodsstock[i].goods_name/}</td>
+                  <td>{/$system.goodsstock[i].stock/}</td>
+                  <td><a href="{/get_url rule="/purchase/purchase" data="gid="|cat:$system.goodsstock[i].goods_id/}">入库</a></td>
+                </tr>
+                {/sectionelse/}
+                <tr>
+                  <td colspan="3">暂无缺货商品</td>
+                </tr>
+                {//section/}
+                  </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+  {/include file="simpla/common/copy.html"/} </div>
+{/include file="simpla/common/footer.html"/}

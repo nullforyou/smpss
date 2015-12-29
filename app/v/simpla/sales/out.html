@@ -1,0 +1,41 @@
+{/include file="simpla/common/header.html"/}
+{/include file="simpla/common/left.html"/}
+<div id="main-content">
+  <h2>欢迎您 {/$_adminname/}</h2>
+  <p id="page-intro">打印小票。</p>
+  <div class="clear"></div>
+  <div class="content-box">
+    <div class="content-box-header">
+      <h3>打印小票</h3>
+      <div class="clear"></div>
+    </div>
+    <div class="content-box-content">
+      <div class="tab-content default-tab" id="tab1">
+        <table width="400">
+          <tr>
+            <td colspan="3">订单号：{/$order_id/} 购买时间：{/$dateline|date_format:"%Y-%m-%d %H:%M:%S"/}</td>
+          </tr>
+          <tr>
+            <th>商品名称</th>
+            <th>数量</th>
+            <th>总价</th>
+          </tr>
+          {/section name=i loop=$goods/}
+          <tr>
+            <td>{/$goods[i].goods_name/}</td>
+            <td>{/$goods[i].num/}</td>
+            <td>{/$goods[i].out_price*$goods[i].num/}</td>
+          </tr>
+          {//section/}
+          <tr>
+            <td colspan="3" class="alt">总价：{/$out_amount/}元，优惠：{/if $mem_amount gt 0/}{/$mem_amount/}元{/elseif $pro_amount gt 0/}{/$pro_amount/}元{/else/}无{//if/}。实收：{/$real_amount/}元</td>
+          </tr>
+          <tr>
+            <td colspan="5"><input name="打印" type="button" class="button" value="打印" /></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  {/include file="simpla/common/copy.html"/} </div>
+{/include file="simpla/common/footer.html"/} 

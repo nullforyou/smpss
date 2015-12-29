@@ -1,0 +1,74 @@
+{/include file="simpla/common/header.html"/}
+{/include file="simpla/common/left.html"/}
+<div id="main-content">
+  <h2>欢迎您 {/$_adminname/}</h2>
+  <p id="page-intro">查看和管理商品库存。</p>
+  <div class="clear"></div>
+  <div class="content-box">
+    <div class="content-box-header">
+      <h3>库存管理</h3>
+      <ul class="content-box-tabs">
+        <li><a href="#tab1" class="default-tab">库存情况</a></li>
+        <li><a href="{/get_url rule="/purchase/purchase"/}">添加库存</a></li>
+      </ul>
+      <div class="clear"></div>
+    </div>
+    <div class="content-box-content">
+      <div class="tab-content default-tab" id="tab1">
+        <div class="form">
+          <form action="{/get_url rule='/purchase/index'/}" method="post" id="js-form">
+            <fieldset class="clearfix">
+              <p>分类： <span>
+                <select id="one" name="cat_id">
+                  <option value="0">-----选择分类-----</option>
+                        {/section name=i loop=$catelist/}
+                          <option value="{/$catelist[i].cat_id/}" {/if $catelist[i].cat_id eq $cat_id/}selected="selected"{//if/}>
+                          {/$catelist[i].pre/}{/$catelist[i].cat_name/}
+                          </option>
+                        {//section/}
+                </select>
+                </span>&nbsp;关键字： <span>
+                <input type="text" value="{/$key/}" class="text-input small-input" name="key" />
+                （商品名称，条形码）
+                <input type="submit" name="" id="button" class="button" value="查询" />
+                </span> </p>
+            </fieldset>
+          </form>
+        </div>
+        <hr />
+        <table>
+          <thead>
+            <tr>
+              <th>商品条形码</th>
+              <th>商品名称</th>
+              <th>进价(元)</th>
+              <th>入库</th>
+              <th>库存</th>
+              <th>已售</th>
+              <th>管理</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <td colspan="6">{/$pagebar/}</td>
+            </tr>
+          </tfoot>
+          <tbody>
+          {/section name=i loop=$purchase/}
+          <tr>
+            <td>{/$purchase[i].goods_sn/}</td>
+            <td>{/$purchase[i].goods_name/}</td>
+            <td><span class="red">{/$purchase[i].in_price/}</span></td>
+            <td>{/$purchase[i].in_num/}</td>
+            <td><span class="red fb">{/$purchase[i].in_num-$purchase[i].out_num/}</span></td>
+            <td>{/$purchase[i].out_num/}</td>
+            <td>{/if $purchase[i].out_num eq 0/}<a onclick="return(confirm('只有入库错误的时候才使用，你确认入库错误?'))" href="{/get_url rule='/purchase/purchase' data='ac=del&gid='|cat:$purchase[i].id/}" title="删除"><img src="{/$root_dir/}/assets/simpla/images/icons/cross.png" alt="删除" /></a>&nbsp;{//if/}<a href="{/get_url rule='/purchase/purchase' data='id='|cat:$purchase[i].goods_id/}" title="入库"><img src="{/$root_dir/}/assets/simpla/images/icons/hammer_screwdriver.png" alt="入库" /></a></td>
+          </tr>
+          {//section/}
+            </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  {/include file="simpla/common/copy.html"/} </div>
+{/include file="simpla/common/footer.html"/}

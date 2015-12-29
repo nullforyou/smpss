@@ -1,0 +1,143 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>公用样式结合</title>
+<link rel="stylesheet" type="text/css" href="css/base.css">
+<style type="text/css">
+fieldset{ border:1px solid #f60}
+legend{ border:1px solid #f60; padding:1px 5px;}
+#menu{border:1px solid #f60; font-size:14px;}
+</style>
+</head>
+<body id="zbj-main">
+<div class="p20">
+	<div id="menu" class="clearfix m20">
+		<ul>
+			<li><a href="#button">+按钮样式</a></li>
+			<li><a href="#info">+提示窗口</a></li>
+			<li><a href="#form">+表单验证</a></li>
+			<li><a href="#page">+分页样式</a></li>
+		</ul>
+	</div>
+	<!-- 按钮 -->
+	<fieldset id="button" class="clearfix m20">
+		<legend>按钮</legend>
+		<div class="p20">
+			<a href="#" class="button b1-max" title="发布需求"><i></i><s>发布需求</s></a>&nbsp;&nbsp;&nbsp;
+			<a href="#" class="button b1-max b1-green" title="发布需求"><i></i><s>发布需求</s></a>&nbsp;&nbsp;&nbsp;
+			<a href="#" class="button b1-max b1-gray" title="发布需求"><i></i><s>发布需求</s></a>
+			<br /><br />
+			<a href="#" class="button b2-max bx-yellow" title="确定"><i></i><s>确定</s></a>&nbsp;&nbsp;&nbsp;
+			<a href="#" class="button b2-max bx-green" title="确定"><i></i><s>确定</s></a>&nbsp;&nbsp;&nbsp;
+			<a href="#" class="button b2-max bx-gray" title="确定"><i></i><s>确定</s></a> 
+			<br /><br />
+			<a href="#" class="button b2-min bn-yellow" title="确定"><i></i><s>确定</s></a>&nbsp;&nbsp;&nbsp;
+			<a href="#" class="button b2-min bn-green" title="确定"><i></i><s>确定</s></a>&nbsp;&nbsp;&nbsp;
+			<a href="#" class="button b2-min bn-gray" title="确定"><i></i><s>确定</s></a>
+			<br /><br />
+			<a href="#" class="button bt-min bt-yellow" title="确定"><i></i><s>确定</s></a>&nbsp;&nbsp;&nbsp;
+			<a href="#" class="button bt-min bt-gray" title="确定"><i></i><s>确定</s></a>&nbsp;&nbsp;&nbsp;
+			<button type="button" class="button bt-min bt-gray" title="确定"><i></i><s>确定</s></button>
+		</div>
+	</fieldset>
+	<!-- 提示窗口 -->
+	<fieldset id="info" class="clearfix m20">
+		<legend>提示窗口</legend>
+		<div class="p20">
+			<div class="art eorr"><u></u>不好意思，出错了<i></i></div><br />
+			<div class="art rigt"><u></u>输入正确，你需要下一步<i></i></div><br />
+			<div class="art prom"><u></u>请确认您的信息，即将到达下一步<i></i></div>
+			<br /><br />
+			<div class="art eorr min-eorr"><u></u>不好意思，出错了<i></i></div><br />
+			<div class="art rigt min-rigt"><u></u>输入正确，你需要下一步<i></i></div><br />
+			<div class="art prom min-prom"><u></u>请确认您的信息，即将到达下一步<i></i></div>
+			<br /><br />
+			<a href="#" id="dialog-m1" class="button b2-max bx-yellow" title="普通弹窗"><i></i><s>普通弹窗</s></a>&nbsp;&nbsp;&nbsp;
+			<a href="#" id="dialog-m2" class="button b2-max bx-green" title="Ajax弹窗"><i></i><s>Ajax弹窗</s></a>&nbsp;&nbsp;&nbsp;
+			<a href="#" id="dialog-m3" class="button b2-max bx-gray" title="Alert消息弹窗"><i></i><s>Alert消息弹窗</s></a> &nbsp;&nbsp;&nbsp;
+			<a href="#" id="dialog-m4" class="button b2-max bx-gray" title="Tips消息弹窗"><i></i><s>Tips消息弹窗</s></a>  &nbsp;&nbsp;&nbsp;
+			<a href="#" id="dialog-m5" class="button b2-max bx-gray" title="登录弹窗"><i></i><s>登录弹窗</s></a> &nbsp;&nbsp;&nbsp;
+			<a href="#" id="dialog-m6" class="button b2-max bx-gray" title="加入服务商弹窗"><i></i><s>加入服务商弹窗</s></a> 
+			<div class="m10 zbj-control">
+				<a href="javascript:void(0)" action-data="http://t4.zbjimg.com/l/t/task-edit.html" action-type="task-edit">编辑任务</a>&nbsp;
+				<a href="javascript:void(0)" action-data="http://t4.zbjimg.com/l/t/task-change.html" action-type="task-change">任务设置</a>&nbsp;
+				<a href="javascript:void(0)" action-data="http://t4.zbjimg.com/l/t/task-tg.html" action-type="task-tg">任务推广</a>&nbsp;
+				<a href="javascript:void(0)" action-data="http://t4.zbjimg.com/l/t/task-setter.html" action-type="task-setter">设置稿件</a>&nbsp;
+				<a href="javascript:void(0)" action-data="http://t4.zbjimg.com/l/t/task-bcsm.html" action-type="task-sgxq">补充说明</a>&nbsp;
+				<a href="javascript:void(0)" action-data="http://t4.zbjimg.com/l/t/task-jjyq.html" action-type="task-jjyq">加价延期</a>&nbsp;
+				<a href="javascript:void(0)" action-data="http://t4.zbjimg.com/l/t/task-raty.html" action-type="task-raty">评价</a>&nbsp;
+				<a href="javascript:void(0)" action-data="http://t4.zbjimg.com/l/t/task-jg.html" action-type="task-jg">交稿</a>&nbsp;				
+				<a href="javascript:void(0)" action-data="http://t4.zbjimg.com/l/t/task-zb.html" action-type="task-zb">设置中标</a>&nbsp;
+				<a href="javascript:void(0)" action-data="http://t4.zbjimg.com/l/t/task-quote.html" action-type="task-quote">我要报价</a>&nbsp;
+				<a  href="javascript:void(0)" action-data="http://t4.zbjimg.com/l/t/task-json.js" action-type="task-prve" data-nobox = "true" class="button bt-min bt-gray" title="上一稿"><i></i><s>上一稿</s></a>&nbsp;
+				<a href="javascript:void(0)" action-data="http://t4.zbjimg.com/l/t/task-json.js" action-type="task-next" data-nobox = "true">下一稿</a>&nbsp;
+				<div id="setter">设置稿件</div>
+			</div>
+		</div>
+	</fieldset>
+	<!-- 表单验证 -->
+	<fieldset id="form" class="clearfix m20">
+		<legend>表单验证</legend>
+		<div class="p20">
+			<div class="form-tab clearfix" style="width:500px; margin:20px 0">
+				<ul class="verify">
+					<li>
+						<label>默认：</label>
+						<span>
+							<em>默认文字</em>
+							<input type="text" name="name" class="text">
+						</span>
+					</li>
+					<li class="txt_o">
+						<label>错误：</label>
+						<span>
+							<input type="text" name="name" class="text" id ="definput" data-value="默认文字">
+						</span>
+						<div class="verify_msg" style="display:block">不能为空</div>
+					</li>
+					<li class="txt_e">
+						<label>正确：</label>
+						<span>
+							<em>默认文字</em>
+							<input type="text" name="name" class="text">
+						</span>
+						<div class="verify_msg" style="display:block">正确</div>
+					</li>
+					<li class="txt_i">
+						<label>提示：</label>
+						<span>
+							<em>默认文字</em>
+							<input type="text" name="name" class="text">
+						</span>
+						<div class="verify_msg" style="display:block">提示</div>
+					</li>
+                    <li>
+                    	<label>提示：</label>
+						<span><textarea class="textarea" name="intro" style="border:1px solid #999; padding:10px; width:100%"></textarea></span>
+                    </li>
+				</ul>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset id="page" class="clearfix m20">
+		<legend>分页样式</legend>
+		<div class="p20">
+		<div class="list-page clearfix pt10">
+	    	<a class="prev" href="http://list.zhubajie.com/t-p2.html">上一页</a>
+	    	<a href="#" class="cur">1</a>
+			<a href="#" class="">2</a>
+			<a href="#" class="">3</a>
+			<a href="#" class="">4</a>
+			<a href="#" class="">5</a>
+			<a href="#" class="">6</a>
+			<a href="#" class="">7</a>
+			<a href="#" class="">8</a>
+			<a href="#" class="">9</a>
+			<a href="#" class="">10</a>
+		    <a class="next" href="http://list.zhubajie.com/t-p4.html">下一页</a>
+		</div>
+	</fieldset>
+</div>
+</body>
+</html>

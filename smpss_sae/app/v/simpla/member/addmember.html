@@ -1,0 +1,137 @@
+{/include file="simpla/common/header.html"/}
+{/include file="simpla/common/left.html"/}
+<div id="main-content">
+  <h2>欢迎您 {/$_adminname/}</h2>
+  <p id="page-intro">添加和编辑会员帐号。带<span class="red">*</span>为必填</p>
+  <div class="clear"></div>
+  <div class="content-box">
+    <div class="content-box-header">
+      <h3>添加编辑帐号</h3>
+      <ul class="content-box-tabs">
+        <li><a href="{/get_url rule="/member/index"/}">帐号管理</a></li>
+        <li><a href="#tab1" class="default-tab">添加帐号</a></li>
+      </ul>
+      <div class="clear"></div>
+    </div>
+    <div class="content-box-content">
+      <div class="tab-content default-tab" id="tab1">
+        <div class="form">
+          <form action="{/get_url rule='/member/addmember'/}" method="post" id="js-form">
+            <fieldset class="clearfix">
+              <input type="hidden" value="{/$member.mid/}" name="mid" />
+                <p>
+                  <label><font class="red"> * </font>真实名字：</label>
+                  <span>
+                  <input type="text" value="{/$member.realname/}" class="text-input small-input" name="realname" id="realname" />
+                  </span> </p>
+                <p>
+                  <label><font class="red"> * </font>会员卡卡号：</label>
+                  <span>
+                  <input type="text" class="text-input small-input" name="membercardid" value="{/$member.membercardid/}" id="membercardid" />
+                  </span> </p>
+                <p><font class="red"> * </font>用户组：<span>
+                  <select name="grade">
+                  {/section name=i loop=$group/}
+                    <option value="{/$group[i].mgid/}" {/if $group[i].mgid eq $member.grade/}selected="selected"{//if/}>{/$group[i].mgroup_name/}-{/$group[i].discount/}%</option>
+                    {//section/}
+                  </select>
+                  </span> </p>
+                <p>身份证号：
+                  <span>
+                  <input type="text" class="text-input small-input" name="cardid" value="{/$member.cardid/}" />
+                  </span> </p>
+                <p>用户状态：
+                  <span>
+                  <input name="state" type="radio" value="1" {/if $member.state eq 1/}checked="checked"{//if/}/>
+                  启用
+                  <input name="state" type="radio" value="0" {/if $member.state eq 0/}checked="checked"{//if/}/>
+                  禁用</span> </p>
+                <p>手机号码：
+                  <span>
+                  <input type="text" class="text-input min-input" name="mobile" value="{/$member.mobile/}" />
+                  </span> </p>
+                <p>座机号码：
+                  <span>
+                  <input type="text" class="text-input min-input" name="phone" value="{/$member.phone/}" />
+                  </span> </p>
+                <p>邮箱地址：
+                  <span>
+                  <input type="text" class="text-input min-input" name="email" value="{/$member.email/}" />
+                  </span> </p>
+                <p>地区选择：
+                  <span>
+                  <select id="province" name="prov_id" onChange="getcity(this.value)">
+                    <option value="">---请选择省份---</option>
+                  </select>
+                  <select id="city" name="city_id">
+                    <option value="">---请选择城市---</option>
+                  </select>
+                  </span> </p>
+                <p>详细地址：
+                  <span>
+                  <input type="text" class="text-input small-input" name="address" value="{/$member.address/}" />
+                  </span> </p>
+                <p>邮政编码：
+                  <span>
+                  <input type="text" class="text-input small-input" name="zipcode" value="{/$member.zipcode/}" />
+                  </span> </p>
+              <dt>
+                <input type="submit" name="" class="button" value="{/if $member.mid/}编辑{/else/}添加{//if/}" />
+              </dt>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {/include file="simpla/common/copy.html"/} </div>
+{/include file="simpla/common/footer.html"/} 
+<script type="text/javascript" src="{/$root_dir/}/assets/js/g.js"></script>
+<script type="text/javascript">
+function getprovince(rid,pid) {
+	 $.ajax({
+		url:'{/$root_dir/}/ajax/getregion',
+		data:'exce=1&parent_id='+rid,
+		success:function(json) {
+			for(i=0;i<json.length;i++) {
+				if(json[i].region_id == pid) {
+					var slt;
+					slt = document.getElementById('province');
+					slt.options.add(new Option(json[i].region_name,json[i].region_id));
+					slt.options[slt.options.length-1].selected='selected';
+				} else {
+					slt = document.getElementById('province');
+					slt.options.add(new Option(json[i].region_name,json[i].region_id));
+				}
+			}
+		}
+	 });
+ }
+function getcity(rid,cid) {
+	 $.ajax({
+		url:'{/$root_dir/}/ajax/getregion',
+		data:'parent_id='+rid,
+		success:function(json) {
+			document.getElementById('city').options.length = 0;
+			document.getElementById('city').options.add(new Option('---请选择城市---',''));
+			for(i=0;i<json.length;i++) {
+				if(json[i].region_id == cid) {
+					var slt;
+					slt = document.getElementById('city');
+					slt.options.add(new Option(json[i].region_name,json[i].region_id));
+					slt.options[slt.options.length-1].selected='selected';
+				} else {
+					slt = document.getElementById('city');
+					slt.options.add(new Option(json[i].region_name,json[i].region_id));
+				}
+			}
+		}
+	 });
+}
+$(document).ready(function(){
+	getprovince('1','{/$member.prov_id/}');
+	{/if $member.prov_id/}
+	getcity('{/$member.prov_id/}','{/$member.city_id/}');
+	{//if/}
+})
+</script>

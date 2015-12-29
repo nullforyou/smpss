@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>反馈</title>
+<link rel="stylesheet" type="text/css" href="css/base.css">
+<script src="http://lib.sinaapp.com/js/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+<style type="text/css">
+fieldset { border:1px solid #f60 }
+legend { border:1px solid #f60; padding:1px 5px; }
+#menu { border:1px solid #f60; font-size:14px; }
+</style>
+</head>
+<body>
+<fieldset id="form" class="clearfix m20">
+  <legend class="p10">您对SmPSS进销存管理系统有任何意见和建议欢迎给我反馈。</legend>
+  <div class="p20">
+    <div class="form-tab clearfix" style="width:500px; margin:20px 0">
+      <ul class="verify">
+        <li>
+          <label>昵称：</label>
+          <span><input type="text" name="nickname" id="nickname" class="text"></span>
+        </li>
+        <li>
+          <label>邮箱：</label>
+          <span><input type="text" name="email" id="email" class="text"></span>
+        </li>
+        <li>
+          <label>反馈类型：</label>
+          <span style="margin-top:2px;"><input type="radio" value="1" name="t" checked="checked">功能建议<input type="radio" value="2" name="t">BUG反馈<input type="radio" value="3" name="t">随便说说</span>
+        </li>
+        <li>
+          <label>详细描述：</label>
+          <span><textarea class="textarea b-1-cd p10" style="width:300px; height:80px;" name="intro" id="intro"></textarea></span>
+        </li>
+        <li>
+		<label></label>
+		<span>
+        <a class="button bt-min bt-yellow" id="fb" title="反馈" href="javascript:;"><i></i><s>反馈</s></a>
+		<a class="button bt-min bt-gray" id="rs" title="重置" href="javascript:;"><i></i><s>重置</s></a>
+        </span>
+      </ul>
+    </div>
+  </div>
+</fieldset>
+<style>
+table {background:#FFFFFF;border: 1px solid #DCDCDC;margin-top: -1px;width:60%;}
+table th {background: url("image/table-t-bg.jpg") repeat-x; line-height:33px;}
+table td {border-top: 1px solid #EDEDED;padding: 15px 10px;}
+table td u {color: #DC3E00;}
+table td i {color: #B94A48;}
+</style>
+<fieldset class="clearfix m20">
+  <legend class="p10">已经回复的反馈。</legend>
+	<div class="p20">
+    <table width="50%">
+        <tr>
+          <th width="10%">类型</th>
+          <th width="40%">内容</th>
+          <th width="15%">时间</th>
+          <th width="35%">回复</th>
+        </tr>
+        <tr>
+          <td valign="top"><u>BUG反馈</u></td>
+          <td valign="top">有点小bug谢谢您的反馈谢谢您的反馈谢谢您的反馈谢谢您的反馈谢谢您的反馈谢谢您的反馈谢谢您的反馈谢谢您的反馈谢谢您的反馈谢谢您的反馈谢谢您的反馈谢谢您的反馈谢谢您的反馈谢谢您的反馈谢谢您的反馈谢谢您的反馈谢谢您的反馈谢谢您的反馈谢谢您的反馈谢谢您的反馈</td>
+          <td valign="top" class="gray6">04/25 22:40:28</td>
+          <td valign="top"><i>：谢谢您的反馈谢谢您的反馈谢谢您的反馈谢谢您的反馈</i><s class="gray6">(04/25 22:40:28)</s></td>
+        </tr>
+	</table>
+    	<div class="list-page clearfix pt10">
+            <a href="#" class="prev">上一页</a>
+            <a class="cur" href="#">1</a>
+            <a class="" href="#">2</a>
+            <a class="" href="#">3</a>
+            <a class="" href="#">4</a>
+            <a class="" href="#">5</a>
+            <a class="" href="#">6</a>
+            <a class="" href="#">7</a>
+            <a class="" href="#">8</a>
+            <a class="" href="#">9</a>
+            <a class="" href="#">10</a>
+            <a href="#" class="next">下一页</a>
+		</div>
+    </div>
+</fieldset>
+<script>
+$(document).ready(function(){
+$("#fb").click(function(){
+	var nickname = $("#nickname").val();
+	var email = $("#email").val();
+	var intro = $("#intro").val();
+	if(nickname=="" || email=="" || intro==""){
+		alert("信息填写不完整");
+	}else{
+		$.post("index.php/c/ajax/fb",{n:nickname,e:email,i:intro},function(result){
+			alert(result.msg);
+			if(result.state==1){
+				location.reload();
+			}
+		});
+		alert(intro);
+	}
+});
+})
+</script>
+</body>
+</html>

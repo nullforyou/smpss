@@ -1,0 +1,62 @@
+{/include file="simpla/common/header.html"/}
+{/include file="simpla/common/left.html"/}
+<div id="main-content">
+  <h2>欢迎您 {/$_adminname/}</h2>
+  <p id="page-intro">进货统计。本统计使用的插件：<a href="http://www.jqplot.com" target="_blank">jqPlot</a></p>
+  <div class="clear"></div>
+  <div class="content-box">
+    <div class="content-box-header">
+      <h3>进货数据统计</h3>
+      <div class="clear"></div>
+    </div>
+{/if $line/}
+<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="{/$root_dir/}/assets/jqplot/excanvas.min.js"></script><![endif]-->
+<script type="text/javascript" src="{/$root_dir/}/assets/jqplot/jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="{/$root_dir/}/assets/jqplot/plugins/jqplot.highlighter.min.js"></script>
+<script type="text/javascript" src="{/$root_dir/}/assets/jqplot/plugins/jqplot.cursor.min.js"></script>
+<script type="text/javascript" src="{/$root_dir/}/assets/jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{/$root_dir/}/assets/jqplot/jquery.jqplot.min.css" />
+<script>
+$(document).ready(function(){
+  var line1=[{/$line/}];
+  var plot1 = $.jqplot('chart1', [line1], {
+      title:'{/$title/}',
+      axes:{
+        xaxis:{
+          renderer:$.jqplot.DateAxisRenderer,
+          tickOptions:{
+            formatString:'%y-%m-%#d'
+          }
+        },
+        yaxis:{
+          tickOptions:{
+            formatString:'￥%.2f'
+            }
+        }
+      },
+      highlighter: {
+        show: true,
+        sizeAdjust: 7.5
+      },
+      cursor: {
+        show: false
+      }
+  });
+});
+</script>
+{//if/}
+    <div class="content-box-content">
+      <div class="tab-content default-tab" id="tab1">
+      	<div class="form">
+            <form action="{/get_url rule='/statistics/sales'/}" method="post" id="js-form">
+                <fieldset class="clearfix">
+               	  <p>时间：<input type="text"  name="start" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"  class="text-input min-input" value="{/$start/}"/>--<input type="text"  name="end" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})"  class="text-input min-input" value="{/$end/}"/>&nbsp;<input type="submit" name="" class="button" id="button" value=" 查询 " /></p>
+                </fieldset>
+            </form>
+        </div>
+        <div id="chart1" style="height:400px; width:100%;"></div>
+      </div>
+    </div>
+  </div>
+  {/include file="simpla/common/copy.html"/} </div>
+{/include file="simpla/common/footer.html"/}

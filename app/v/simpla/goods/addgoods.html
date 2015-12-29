@@ -1,0 +1,132 @@
+{/include file="simpla/common/header.html"/}
+{/include file="simpla/common/left.html"/}
+<style>.promote{display:none;}</style>
+<div id="main-content">
+  <h2>欢迎您 {/$_adminname/}</h2>
+  <p id="page-intro">1.你可以在这里添加新的商品或者编辑已有的商品。2.新添加商品的时候可以同时进行入库(入库必须有数量和进价)！3.带 <span class="red">*</span> 的项目必填</p>
+  <div class="clear"></div>
+  <div class="content-box">
+    <div class="content-box-header">
+      <h3>添加商品</h3>
+      <ul class="content-box-tabs">
+        <li><a href="{/get_url rule="/goods/index"/}">商品管理</a></li>
+        <li><a href="#tab1" class="default-tab">添加商品</a></li>
+      </ul>
+      <div class="clear"></div>
+    </div>
+    <div class="content-box-content">
+      <div class="tab-content default-tab" id="tab1">
+        <div class="form">
+          <form action="{/get_url rule='/goods/addgoods'/}" method="post" id="js-form">
+            <fieldset class="clearfix">
+              <input type="hidden" value="{/$goods.goods_id/}" name="goods_id" />
+              <p>
+                <label><font class="red"> * </font>所属分类：</label>
+                <select id="one" name="cat_id">
+                  <option value="0">-----选择分类-----</option>
+            {/section name=i loop=$catelist/}
+                  <option value="{/$catelist[i].cat_id/}" {/if $catelist[i].cat_id eq $goods.cat_id/}selected="selected"{//if/}>
+                    {/$catelist[i].pre/}{/$catelist[i].cat_name/}
+                  </option>
+            {//section/}
+                </select>
+                <span></span> </p>
+              <p>
+                <label><font class="red"> * </font>商品条形码：</label>
+                <input type="text" value="{/$goods.goods_sn/}" class="text-input small-input" name="goods_sn" id="goods_sn" />
+                <span></span><input type="button" id="getbarcode" class="button" value="生成条形码" /> &nbsp;<a id="img" style="display:none" href="" target="_blank">查看条形码</a></p>
+              <p>
+                <label><font class="red"> * </font>商品名称：</label>
+                <input type="text" value="{/$goods.goods_name/}" class="text-input small-input" name="goods_name" id="goods_name" />
+                <span></span> </p>
+              <p>
+                <label><font class="red"> * </font>商品售价：</label>
+                <input type="text" value="{/$goods.out_price/}" class="text-input min-input" name="out_price" id="out_price" />
+                元 <span></span> </p>
+              <p>
+                <label>市场价：</label>
+                <input type="text" value="{/$goods.market_price/}" class="text-input min-input" name="market_price" />
+                <span>元</span><br /><small>默认市场价为售价的1.2倍</small> </p>
+              {/if $goods.goods_id eq ""/}
+              <p>
+                <label>商品进价：</label>
+                <input type="text" value="" class="text-input min-input" name="in_price" />
+                 <span> 元</span></p>
+              <p><label>入库数量：</label>
+                <input type="text" value="" class="text-input min-input" name="in_num" />
+               <span></span><br /><small>记重商品单位为千克</small> </p>
+              {//if/}
+              <p>
+                <label>商品重量：</label>
+                <input type="text" value="{/$goods.weight/}" class="text-input min-input" name="weight" />
+                <span> </span> </p>
+              <p>
+                <label>商品单位：</label>
+                <input type="text" value="{/$goods.unit/}" class="text-input min-input" name="unit" />
+                <span> </span> </p>
+              <p class="ftext">
+                <label>会员优惠：</label>
+                <input name="ismemberprice" type="radio" value="1" {/if $goods.ismemberprice eq 1 || $goods.goods_id eq ''/}checked="checked"{//if/}/>
+                享受
+                <input name="ismemberprice" type="radio" value="0" {/if $goods.ismemberprice eq 0 && $goods.goods_id neq ''/}checked="checked"{//if/}/>
+                不享受 <span></span> </p>
+              <p class="ftext">
+                <label>是否促销：</label>
+                <input name="ispromote" class="ispromote" type="radio" value="1" {/if $goods.ispromote eq 1/}checked="checked"{//if/}/>
+                启用
+                <input name="ispromote" class="ispromote" type="radio" value="0" {/if $goods.ispromote eq 0/}checked="checked"{//if/}/>
+                禁用 <span></span> </p>
+              <p class="promote">
+                <label>促销价：</label>
+                <input type="text" value="{/$goods.promote_price/}" class="text-input min-input" name="promote_price" id="promote_price" />
+                <span>元 </span> </p>
+              <p class="promote">
+                <label>开始时间：</label>
+                <input type="text" value="{/$goods.promote_start_date/}" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" class="text-input min-input" name="promote_start_date" id="promote_start_date" />
+                <span> </span> </p>
+              <p class="promote">
+                <label>结束时间：</label>
+                <input type="text" value="{/$goods.promote_end_date/}" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" class="text-input min-input" name="promote_end_date" id="promote_end_date" />
+                <span> </span> </p>
+              <p>
+                <label>商品简介：</label>
+                <textarea name="goods_desc" class="text-input textarea">{/$goods.goods_desc/}</textarea>
+                <span> </span> <br /><small>不超过200个汉字</small></p>
+              <dt>
+                <input type="submit" name="" id="button" class="button" value="{/if $goods.goods_id/}编辑{/else/}添加{//if/}" />
+              </dt>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+      <!-- End #tab1 --> 
+    </div>
+    <!-- End .content-box-content --> 
+  </div>
+  <!-- End .content-box --> 
+  {/include file="simpla/common/copy.html"/} </div>
+{/include file="simpla/common/footer.html"/}
+<script type="text/javascript">
+    $(function() { 
+		e = $(".ispromote:checked").val();
+		if(e==1) $(".promote").show();
+        $(".ispromote").click (function(){
+			if($(".ispromote").attr("checked")){
+				$(".promote").show();
+			}else{
+				$(".promote").hide();
+			}
+		});
+		$("#getbarcode").click(function(){
+			$.post("{/get_url rule="/ajax/getbarcode"/}",{},function(result){
+				if(result){
+					$("#goods_sn").val(result.code);
+					$("#img").show();
+					$("#img").attr("href",result.imgsrc);
+				}else{
+					alert("生成出错！");
+				}
+			},"json")
+		})
+    });
+</script>

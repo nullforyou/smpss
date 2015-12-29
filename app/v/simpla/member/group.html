@@ -1,0 +1,51 @@
+{/include file="simpla/common/header.html"/}
+{/include file="simpla/common/left.html"/}
+<div id="main-content">
+  <h2>欢迎您 {/$_adminname/}</h2>
+  <p id="page-intro">用户组管理。</p>
+  <div class="clear"></div>
+  <div class="content-box">
+    <div class="content-box-header">
+      <h3>用户组管理</h3>
+      <div class="clear"></div>
+    </div>
+    <div class="content-box-content">
+      <div class="tab-content default-tab" id="tab1">
+        {/if $groupone.mgid eq 0/}
+        <table>
+          <thead>
+            <tr>
+              <th>用户组名称</th>
+              <th>折扣(单位%)</th>
+              <th>管理</th>
+            </tr>
+          </thead>
+          <tbody>
+          {/section name=i loop=$group/}
+          <tr>
+            <td>{/$group[i].mgroup_name/}</td>
+            <td>{/$group[i].discount/}%</td>
+            <td><a href="{/get_url rule='/member/group' data='mgid='|cat:$group[i].mgid/}" title="编辑"><img src="{/$root_dir/}/assets/simpla/images/icons/pencil.png" alt="编辑" /></a></td>
+          </tr>
+          {//section/}
+            </tbody>
+        </table>
+        <hr />
+        {//if/}
+        <div class="form">
+          <form action="{/get_url rule='/member/group'/}" method="post" id="js-form">
+            <fieldset class="clearfix">
+            <input type="hidden" name="mgid" value="{/$groupone.mgid/}" />
+              <p><label>用户组名称：</label><span>
+                <input type="text" value="{/$groupone.mgroup_name/}" class="text-input small-input" name="mgroup_name" /></span></p>
+              <p><label>折扣：</label><span>
+                <input type="text" value="{/$groupone.discount/}" class="text-input min-input" name="discount" />%</span><font class="red">注意这里单位是百分之，如果是八折请填80</font></p>
+              <p><input type="submit" name="" class="button" value="{/if $groupone.mgid/}编辑用户组{/else/}添加用户组{//if/}" /></p>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  {/include file="simpla/common/copy.html"/} </div>
+{/include file="simpla/common/footer.html"/}

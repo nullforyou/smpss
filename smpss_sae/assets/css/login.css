@@ -1,0 +1,12 @@
+@charset "utf-8";
+td{height:40px; line-height:20px;}
+#header{height:70px; width:100%; margin:0 auto; background:url(/assets/images/bg.png) repeat-x 100px -10px;}
+#login{width:380px; margin:100px auto;}
+.l-t1{background:url(/assets/images/bgpic1.gif) no-repeat -12px -56px; height:10px;}
+.l-main{background:url(/assets/images/login-middle.gif) repeat-y -2px; height:200px;}
+.l-b1{background:url(/assets/images/bgpic1.gif) no-repeat -12px -82px; height:10px;}
+.l-ico{background:url(/assets/images/bgpic1.gif) no-repeat -250px -110px; padding-left:55px; font-size:14px; font-weight:bold;}
+.l-text1{font-size:12px; padding-left:50px;}
+.l-text1-input{width:172px;border:#0a8fda 1px solid;background-color:#E8F9FF;font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px;padding:5px 3px; font-weight:bold;}
+.l-text2-input{width:60px;font-size:14px;border:1px solid #84a1bd;padding:3px 3px;}
+.l-btn{text-align:center;}
