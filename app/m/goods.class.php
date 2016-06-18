@@ -63,6 +63,7 @@ class m_goods extends base_m {
 				$purchase ['goods_id'] = $rs;
 				$purchase ['in_num'] = ( float ) $data ['in_num'];
 				$purchase ['in_price'] = ( float ) $data ['in_price'];
+				$purchase ['goods_sn'] = $data ['goods_sn'];
 				$purchaseObj->create ( $purchase );
 			}
 			return $rs;
