@@ -1,1 +1,3 @@
 .svn/
+app/v_t/*.php
+app/data/

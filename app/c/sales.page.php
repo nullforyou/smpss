@@ -121,7 +121,7 @@ class c_sales extends base_c {
 	
 	function pageOut($inPath) {
 		$url = $this->getUrlParams ( $inPath );
-		$order_id = (int)$url['oid'];
+		$order_id = $url['oid'];
 		session_start ();
 		$tempsales = new m_tempsales();
 		$info = $tempsales->select("order_id='{$order_id}'")->items;
